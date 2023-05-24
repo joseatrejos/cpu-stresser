@@ -52,10 +52,10 @@ def api_call():
 
 if __name__ == '__main__':
 	while(True):
-		sleeptime = random.randrange(1, 3600)
+		sleeptime = random.randrange(1, 1800)
 
-		runtime = random.randrange(1, 900)                  if len(sys.argv) <= 1 else float(sys.argv[1])
-		busycycles = random.randrange(1000000, 9000000)     if len(sys.argv) <= 2 else float(sys.argv[2])
+		runtime = random.randrange(60, 600)                 if len(sys.argv) <= 1 else float(sys.argv[1])
+		busycycles = random.randrange(1000000, 5000000)		if len(sys.argv) <= 2 else float(sys.argv[2])
 		processes = cpu_count()                             if len(sys.argv) <= 3 else int(sys.argv[4])     if 0 < int(sys.argv[3]) <= cpu_count() else cpu_count()
 		
 		print(f'Running for {runtime}s with sleep time of {sleeptime} seconds. CPU will rest every {busycycles} cycles, utilizing {processes} cores')
