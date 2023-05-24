@@ -64,6 +64,7 @@ if __name__ == '__main__':
 		pool.starmap(stress_cpu, zip(range(processes), repeat(runtime), repeat(busycycles)))
 
 		# Call an API and sleep our code
+		print(f"Finished stressing. Calling an API")
 		api_call()
-		print(f"Finished stressing. Sleeping for {sleeptime} seconds")
+		print(f"Sleeping for {sleeptime} seconds")
 		time.sleep(sleeptime)
