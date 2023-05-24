@@ -42,13 +42,12 @@ def stress_cpu(x, runtime=1, busycycles=100000):
 def api_call():
 	url = "https://rickandmortyapi.com/api/character/17"
 
-	headers = {
-		'Content-Type': 'application/json'
-	}
+	payload = ""
+	headers = {}
 
-	response = requests.request("GET", url, headers=headers)
+	response = requests.request("GET", url, headers=headers, data=payload)
+
 	print(response.text)
-
 
 if __name__ == '__main__':
 	while(True):
