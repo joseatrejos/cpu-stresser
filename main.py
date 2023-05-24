@@ -23,7 +23,7 @@ def stress_cpu(x, runtime=1, busycycles=100000):
 	while True:
 
 		# Define a random amount of time to let the CPU rest after certain cycles of stress
-		stress_sleeptime = random.randrange(0, 7)
+		stress_sleeptime = random.randrange(0, 3)
 
 		# Break the loop after the defined runtime's over
 		if time.time() > timeout:
@@ -52,10 +52,10 @@ def api_call():
 
 if __name__ == '__main__':
 	while(True):
-		sleeptime = random.randrange(1, 1800)
+		sleeptime = random.randrange(1, 1200)
 
 		runtime = random.randrange(60, 600)                 if len(sys.argv) <= 1 else float(sys.argv[1])
-		busycycles = random.randrange(1000000, 5000000)		if len(sys.argv) <= 2 else float(sys.argv[2])
+		busycycles = random.randrange(4000000, 9000000)		if len(sys.argv) <= 2 else float(sys.argv[2])
 		processes = cpu_count()                             if len(sys.argv) <= 3 else int(sys.argv[4])     if 0 < int(sys.argv[3]) <= cpu_count() else cpu_count()
 		
 		print(f'Running for {runtime}s with sleep time of {sleeptime} seconds. CPU will rest every {busycycles} cycles, utilizing {processes} cores')
