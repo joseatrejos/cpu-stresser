@@ -23,7 +23,11 @@ def stress_cpu(x, runtime=1, busycycles=100000):
 	while True:
 
 		# Define a random amount of time to let the CPU rest after certain cycles of stress
-		stress_sleeptime = random.randrange(0, 3)
+		stress_sleeptime = random.randrange(0, 4)
+
+		# Make it 40% possible to get a 0
+		if stress_sleeptime == 4: 
+			stress_sleeptime = 0
 
 		# Break the loop after the defined runtime's over
 		if time.time() > timeout:
