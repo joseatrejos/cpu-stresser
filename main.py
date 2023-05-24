@@ -55,7 +55,7 @@ if __name__ == '__main__':
 		sleeptime = random.randrange(1, 1200)
 
 		runtime = random.randrange(60, 600)                 if len(sys.argv) <= 1 else float(sys.argv[1])
-		busycycles = random.randrange(4000000, 9000000)		if len(sys.argv) <= 2 else float(sys.argv[2])
+		busycycles = random.randrange(4000000, 9000000)	    if len(sys.argv) <= 2 else float(sys.argv[2])
 		processes = cpu_count()                             if len(sys.argv) <= 3 else int(sys.argv[4])     if 0 < int(sys.argv[3]) <= cpu_count() else cpu_count()
 		
 		print(f'Running for {runtime}s with sleep time of {sleeptime} seconds. CPU will rest every {busycycles} cycles, utilizing {processes} cores')
