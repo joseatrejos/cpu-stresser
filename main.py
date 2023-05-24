@@ -23,7 +23,7 @@ def stress_cpu(x, runtime=1, busycycles=100000):
 	while True:
 
 		# Define a random amount of time to let the CPU rest after certain cycles of stress
-		stress_sleeptime = random.randrange(0, 15)
+		stress_sleeptime = random.randrange(0, 7)
 
 		# Break the loop after the defined runtime's over
 		if time.time() > timeout:
@@ -58,11 +58,13 @@ if __name__ == '__main__':
 		busycycles = random.randrange(1000000, 9000000)     if len(sys.argv) <= 2 else float(sys.argv[2])
 		processes = cpu_count()                             if len(sys.argv) <= 3 else int(sys.argv[4])     if 0 < int(sys.argv[3]) <= cpu_count() else cpu_count()
 		
-		print(f'Running for {runtime}s with sleep time of {sleeptime}. CPU will rest every {busycycles} cycles, utilizing {processes} cores')
+		print(f'Running for {runtime}s with sleep time of {sleeptime} seconds. CPU will rest every {busycycles} cycles, utilizing {processes} cores')
 
 		# Stress
 		pool = Pool(processes)
 		pool.starmap(stress_cpu, zip(range(processes), repeat(runtime), repeat(busycycles)))
 
-		# Sleep
+		# Sleep and call an API
+		print(f"Finished stressing. Sleeping for {sleeptime} seconds")
 		time.sleep(sleeptime)
+		api_call()
